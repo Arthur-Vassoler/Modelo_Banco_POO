@@ -31,12 +31,15 @@ Podemos estanciar uma variável para a outra variável.
 EX:
 
 class CriaConta
+
 {
+
     $primeiraConta = new Conta();
 
     $primeiraConta->nomeTitular =  'Arthur';
 
     $segundaConta->$primeriaConta;
+
 }
 
 Assim a segundaConta terá o mesmo valor de primeiraConta.
@@ -48,6 +51,7 @@ Nós podemos colocar o valor fixo em uma variável que irá ser referência.
 Devemos evitar ao máximo usar else, então quando temos um if e ele n retorna nada/: void, podemos só dar um return; para ele parar a execução do if após toda a execução dele, e em baixo colocamos os objetos do else, sem precisar colocar else{}.
 
 PROPRIEDADES = variáveis;
+
 MÉTODOS = funções;
 
 É recomendado que todas as propriedades sejam privadas, e só métodos sejam publicos.
@@ -66,31 +70,42 @@ O método __destruct ele exclui tudo que não está sendo utilizado mas que cont
 
 Sempre devemos Criar um Arquivo para cada classe.
 
+Nós podemos ultizar o 'comando extends' para utilizar para extender uma classe, podendo utilizar comandos da classe extendida, em várias classes.
+
+Propriedade PROTECTED nós podemos acessar ele na classe pai e também nas classes filhas.
+
+******************
+*** AUTOLOAD ***
 
 
+Para fazer um autoload precisamos de uma função do php spl_autoload_register();
+ela recebe outra função, que tem de parametro uma string $nomeCompletoDaClasse.
+$nomeCompletoDaClasse retorna o namespace.
+então utilizamos o str_replace para modificar a sting e acessar as pastas, trocamos então de Alura\Banco para src,
+direcionando o namespace para o diretório das pastas.
 
+Utilizamos o DIRECTORY_SEPARATOR para trocar as \ pois se mudarmos de sistema operacional, a leitura dos arquivos por pastas muda, e o php entrega essa verificação pronta com DIRECTORY_SEPARATOR.
 
+temos uma verificação para ver se o caminho do arquivo existe, se existir damos um require nele. 
 
+******************
 
+Adcionamos uma tarifa de saque, com uma verificação para contas correntes 5%, e contas poupanças 3%.
 
+Método abstract froça com que toda a classe que estende a classe com um método abstract precisa implementar esse método.
+Para que o método possa ser abstract, a classe em que ele está deve ser abstract.
 
+******************
 
+Interface é uma classe que todos os métodos são métodos abistratos, não é preciso expecificar no método que ele é abistrato, ao colocar a classe como interface todos os métodos viram abstratos por padrao.
 
+******************
 
+Todos os métodos que começam com __ são métodos mágicos.
 
+******************
 
-
-
-
-
-
-
-
-
-
-
-
-
+Impedindo herança de classes, para impedir heranças de classes, usamos o comando 'final'.
 
 
 

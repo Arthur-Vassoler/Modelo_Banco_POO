@@ -1,12 +1,15 @@
 <?php
 
-class Conta
+namespace Alura\Banco\Modelo\Conta;
+
+abstract class Conta
 {
     private Titular $titular;
-    private float $saldo;
+    protected float $saldo;
     private static $numeroDeContas = 0;
 
-    // O método construtor está recebendo 2 parâmetros para fazer a verificação, para criar uma conta
+    // O método construtor está recebendo 2 parâmetros para fazer a verificação, para criar uma contA
+
     public function __construct(Titular $titular)
     {
         $this->titular = $titular;
@@ -22,11 +25,13 @@ class Conta
 
     public function sacar(float $valorASacar): void
     {
-        if ($valorASacar > $this->saldo) {
+        $tarifaSaque = $valorASacar * $this->percentualTarifa();
+        $valorSaque = $valorASacar + $tarifaSaque;
+        if ($valorSaque > $this->saldo) {
             echo "Saldo Indisponível.";
             return;
         }
-        $this->saldo -= $valorASacar;
+        $this->saldo -= $valorSaque;
     }
 
     public function depositar(float $valorADepositar): void
@@ -38,27 +43,17 @@ class Conta
         $this->saldo += $valorADepositar;
     }
 
-    public function transferir(float $valorATransferir, Conta $contaDestino): void
-    {
-        if ($valorATransferir > $this->saldo) {
-            echo "Saldo Indisponível.";
-            return;
-        }
-        $this->sacar($valorATransferir);
-        $contaDestino->depositar($valorATransferir);
-    }
-
     public function recuperaSaldo(): float
     {
         return $this->saldo;
     }
 
-    public function recuperaNomeTitular(): string
+    public function recuperaNome(): string
     {
         return $this->titular->recuperaNome();
     }
 
-    public function recuperaCpfTitular(): string
+    public function recuperaCpf(): string
     {
         return $this->titular->recuperaCpf();
     }
@@ -66,4 +61,6 @@ class Conta
     public static function recuperaNumeroDeContas(): int {
         return  self::$numeroDeContas;
     }
+
+    abstract protected function percentualTarifa(): float;
 }

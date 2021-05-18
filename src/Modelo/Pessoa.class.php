@@ -14,14 +14,14 @@ class Pessoa
         $this->cpf = $cpf;
     }
 
-    public function recuperaNome(): string
+    public function getNome(): string
     {
         return $this->nome;
     }
 
-    public function recuperaCpf(): string
+    public function getCpf(): string
     {
-        return $this->cpf->recuperaNumero();
+        return $this->cpf->getNumero();
     }
 
     protected function validaNome(string $nomeTitular)

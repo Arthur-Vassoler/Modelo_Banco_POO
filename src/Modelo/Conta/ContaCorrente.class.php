@@ -10,7 +10,7 @@ class ContaCorrente extends Conta
         return 0.05;
     }
 
-    private function transferir(float $valorATransferir, Conta $contaDestino): void
+    public function transferir(float $valorATransferir, Conta $contaDestino): void
     {
         if ($valorATransferir > $this->saldo) {
             echo "Saldo Indisponível.";

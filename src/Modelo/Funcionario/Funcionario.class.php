@@ -17,12 +17,12 @@ abstract class Funcionario extends Pessoa
         $this->salario = $salario;
     }
 
-    public function recuperaCargo(): string
+    public function getCargo(): string
     {
         return $this->cargo;
     }
 
-    public function recuperaSalario(): float
+    public function getSalario(): float
     {
         return $this->salario;
     }

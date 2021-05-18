@@ -17,7 +17,7 @@ class Titular extends Pessoa implements Autenticavel
         $this->endereco = $endereco;
     }
 
-    public function recuperaEndereco(): Endereco
+    public function getEndereco(): Endereco
     {
         return $this->endereco;
     }
